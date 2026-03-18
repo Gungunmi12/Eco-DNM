@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 47% 2%;
+    --foreground: 213 31% 85%;
+
+    --card: 217 33% 6%;
+    --card-foreground: 213 31% 85%;
+
+    --popover: 217 33% 6%;
+    --popover-foreground: 213 31% 85%;
+
+    --primary: 160 84% 39%;
+    --primary-foreground: 222 47% 4%;
+
+    --secondary: 217 33% 12%;
+    --secondary-foreground: 213 31% 85%;
+
+    --muted: 217 33% 12%;
+    --muted-foreground: 215 20% 45%;
+
+    --accent: 239 84% 67%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 222 47% 4%;
+
+    --agent: 239 84% 67%;
+    --agent-foreground: 210 40% 98%;
+
+    --border: 217 33% 15%;
+    --input: 217 33% 15%;
+    --ring: 160 84% 39%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 222 47% 4%;
+    --sidebar-foreground: 213 31% 85%;
+    --sidebar-primary: 160 84% 39%;
+    --sidebar-primary-foreground: 222 47% 4%;
+    --sidebar-accent: 217 33% 12%;
+    --sidebar-accent-foreground: 213 31% 85%;
+    --sidebar-border: 217 33% 15%;
+    --sidebar-ring: 160 84% 39%;
+
+    --chart-emerald: 160 84% 39%;
+    --chart-indigo: 239 84% 67%;
+    --chart-rose: 0 84% 60%;
+    --chart-amber: 38 92% 50%;
+
+    --surface-elevated: 217 33% 8%;
+    --glow-primary: 0 0% 0% / 0;
+  }
+
+  .dark {
+    /* Same as root — dark-only app */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Geist Sans', system-ui, -apple-system, sans-serif;
+    letter-spacing: -0.02em;
+  }
+  .font-mono {
+    font-family: 'IBM Plex Mono', monospace;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer utilities {
+  .glow-primary {
+    box-shadow: 0 0 15px hsl(160 84% 39% / 0.4);
+  }
+  .glow-agent {
+    box-shadow: 0 0 50px hsl(239 84% 67% / 0.05);
+  }
+  .surface-card {
+    @apply bg-card/40 border border-border rounded-2xl;
+  }
+  .text-data {
+    font-family: 'IBM Plex Mono', monospace;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Custom range slider for scenario simulator */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: hsl(217 33% 15%);
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: hsl(239 84% 67%);
+  cursor: pointer;
+  border: 2px solid hsl(239 84% 80%);
+}
+
+/* Pulse animation for CTA */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 hsl(160 84% 39% / 0.4); }
+  50% { box-shadow: 0 0 20px 4px hsl(160 84% 39% / 0.2); }
+}
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: hsl(222 47% 2%); }
+::-webkit-scrollbar-thumb { background: hsl(217 33% 15%); border-radius: 3px; }
